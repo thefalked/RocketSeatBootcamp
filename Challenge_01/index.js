@@ -15,7 +15,7 @@ server.use((req, res, next) => {
 });
 
 function hasId(req, res, next) {
-  const teste = projects.find(projeto => projeto.id == req.params.id);
+  const teste = projects.find(project => project.id == req.params.id);
 
   if (!teste) {
     return res.status(400).json({ error: `Project does not exist` });
@@ -50,13 +50,13 @@ server.put("/projects/:id", hasId, (req, res) => {
     project.id == id ? (project.title = title) : project.title;
   });
 
-  res.status(200).json(projects.find(projeto => projeto.id == req.params.id));
+  res.status(200).json(projects.find(project => project.id == req.params.id));
 });
 
 server.delete("/projects/:id", hasId, (req, res) => {
   const { id } = req.params;
 
-  const index = projects.findIndex(projeto => projeto.id == id);
+  const index = projects.findIndex(project => project.id == id);
 
   projects.splice(index, 1);
 
