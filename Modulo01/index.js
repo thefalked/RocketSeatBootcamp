@@ -23,6 +23,14 @@ server.use((req, res, next) => {
   console.timeEnd("Request");
 });
 
+function checkUserExists(req, res, next) {
+  if (!req.body.user) {
+    return res.status(400).json({ error: "User name is required" });
+  }
+
+  return next();
+}
+
 server.get("/users", (req, res) => {
   return res.json(users);
 });
@@ -33,7 +41,7 @@ server.get("/users/:index", (req, res) => {
   return res.json(users[index]);
 });
 
-server.post("/users", (req, res) => {
+server.post("/users", checkUserExists, (req, res) => {
   const { name } = req.body;
 
   users.push(name);
@@ -41,7 +49,7 @@ server.post("/users", (req, res) => {
   return res.json(users);
 });
 
-server.put("/users/:index", (req, res) => {
+server.put("/users/:index", checkUserExists, (req, res) => {
   const { index } = req.params;
   const { name } = req.body;
 
