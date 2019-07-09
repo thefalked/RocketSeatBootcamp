@@ -22,7 +22,7 @@ class AvailableController {
 
     // 2018-07-09 07:58:44
 
-    const appointments = await Appointment.findAll({
+    const appointments = await Appointment.finddAll({
       where: {
         provider_id: req.params.providerId,
         canceled_at: null,
