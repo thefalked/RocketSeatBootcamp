@@ -1,0 +1,36 @@
+.post {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  color: #000;
+}
+
+.post .post-header {
+  display: flex;
+}
+
+.post .post-header .post-header-profile img {
+  border-radius: 50%;
+
+  width: 50px;
+  height: 50px;
+
+  margin-right: 1rem;
+}
+
+.post .post-header .post-header-info .post-header-info-name {
+  font-weight: bold;
+  color: black;
+  opacity: 0.7;
+}
+
+.post .post-header .post-header-info .post-header-info-date {
+  color: grey;
+}
+
+.post .post-body {
+  margin-top: 1rem;
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}

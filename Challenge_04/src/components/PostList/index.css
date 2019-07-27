@@ -1,0 +1,12 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post {
+  margin-bottom: 1.5rem;
+}
+
+.post:first-child {
+  margin-top: 1.5rem;
+}

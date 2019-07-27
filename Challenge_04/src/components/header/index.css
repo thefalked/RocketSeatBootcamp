@@ -1,0 +1,25 @@
+.header {
+  background-color: #5c5cfe;
+  padding: 1rem 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .header-logo p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header .header-link-profile a {
+  display: flex;
+
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: white;
+}
+
+.header .header-link-profile i {
+  margin-left: 0.5rem;
+}
