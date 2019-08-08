@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'Modulo05' do
-  # Pods for Modulo05
+target 'Challenge_06' do
+  # Pods for Challenge_06
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
   pod 'React-DevSupport', :path => '../node_modules/react-native/React'
@@ -34,7 +34,9 @@ target 'Modulo05' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
-  target 'Modulo05Tests' do
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  target 'Challenge_06Tests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +44,10 @@ target 'Modulo05' do
   use_native_modules!
 end
 
-target 'Modulo05-tvOS' do
-  # Pods for Modulo05-tvOS
+target 'Challenge_06-tvOS' do
+  # Pods for Challenge_06-tvOS
 
-  target 'Modulo05-tvOSTests' do
+  target 'Challenge_06-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
