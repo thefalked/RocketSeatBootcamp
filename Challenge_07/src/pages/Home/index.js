@@ -30,6 +30,24 @@ export default function Home() {
 
           <ButtonCart>
             <QntCart>
+              <Icon name="shopping-cart" size={19} color="#FFF" />
+              <Qnt>1</Qnt>
+            </QntCart>
+            <ButtonCartText>Adicionar</ButtonCartText>
+          </ButtonCart>
+        </Product>
+        <Product>
+          <ProductImage
+            source={{
+              uri:
+                'https://imgcentauro-a.akamaihd.net/900x900/92344102/tenis-new-balance-ml501-masculino-img.jpg',
+            }}
+          />
+          <Title>Tênis de caminhada leve e confortaél</Title>
+          <Price>R$ 1000,00</Price>
+
+          <ButtonCart>
+            <QntCart>
               <Icon name="shopping-cart" size={20} color="#FFF" />
               <Qnt>1</Qnt>
             </QntCart>

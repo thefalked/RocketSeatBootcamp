@@ -1,13 +1,13 @@
-import { createAppContainer, createDrawerNavigator } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 
 const Routes = createAppContainer(
-  createDrawerNavigator(
+  createSwitchNavigator(
     {
-      Home,
       Cart,
+      Home,
     },
     {
       defaultNavigationOptions: {

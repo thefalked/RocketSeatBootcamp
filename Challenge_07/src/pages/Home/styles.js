@@ -6,8 +6,10 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-export const ProductList = styled.View`
-  padding: 20px;
+export const ProductList = styled.ScrollView.attrs({
+  horizontal: true,
+})`
+  padding: 20px 0;
 `;
 
 // export const Product = styled.FlatList``;
@@ -15,8 +17,10 @@ export const Product = styled.View`
   background: #fff;
   border-radius: 4px;
   padding: 20px;
+  margin-left: 20px;
 
-  max-width: 300px;
+  max-width: 250px;
+  margin-bottom: auto;
 `;
 
 export const ProductImage = styled.Image`
@@ -36,7 +40,7 @@ export const Title = styled.Text`
 export const Price = styled.Text`
   font-size: 21px;
   font-weight: bold;
-  margin: 5px 0 20px;
+  margin: 5px 0 30px;
 `;
 
 export const ButtonCart = styled(RectButton)`
@@ -55,18 +59,19 @@ export const ButtonCartText = styled.Text`
   font-size: 20px;
   text-align: center;
   width: auto;
+  margin: 0 auto;
 `;
 
 export const QntCart = styled.Text`
+  flex-direction: row;
   align-items: baseline;
-  padding: 12px;
   background: rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: bold;
+  padding: 10px 10px;
 `;
 
 export const Qnt = styled.Text`
   color: white;
   font-size: 20px;
-  margin-bottom: 10px;
 `;
