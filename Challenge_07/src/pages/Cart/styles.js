@@ -23,7 +23,7 @@ export const EmptyCart = styled.Text`
 
 // =================================================
 
-export const Product = styled.View`
+export const Product = styled.FlatList`
   margin-top: 20px;
 `;
 

@@ -6,8 +6,8 @@ import Cart from './pages/Cart';
 const Routes = createAppContainer(
   createSwitchNavigator(
     {
-      Cart,
       Home,
+      Cart,
     },
     {
       defaultNavigationOptions: {

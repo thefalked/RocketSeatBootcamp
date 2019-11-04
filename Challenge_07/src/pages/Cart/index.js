@@ -1,4 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// import { formatPrice } from '../../util/format';
+
+import * as CartActions from '../../store/modules/cart/actions';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -25,7 +32,15 @@ import {
   TottalButtonText,
 } from './styles';
 
-export default function Cart() {
+function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
+  function increment(product) {
+    updateAmountRequest(product.id, product.amount + 1);
+  }
+
+  function decrement(product) {
+    updateAmountRequest(product.id, product.amount - 1);
+  }
+
   return (
     <Container>
       <ProductList>
@@ -33,64 +48,35 @@ export default function Cart() {
           <ProductDescription>
             <ProductImage
               source={{
-                uri:
-                  'https://imgcentauro-a.akamaihd.net/900x900/92344102/tenis-new-balance-ml501-masculino-img.jpg',
+                uri: product.image,
               }}
+              alt={product.title}
             />
             <ProducTexts>
-              <Title>Tênis de caminhada leve e confortavél</Title>
-              <Price>R$ 1000,00</Price>
+              <Title>{product.title}</Title>
+              <Price>{product.priceFormatted}</Price>
             </ProducTexts>
-            <ButtonDelete>
+            <ButtonDelete onClick={() => removeFromCart(product.id)}>
               <Icon name="delete-forever" size={20} color="#7159c1" />
             </ButtonDelete>
           </ProductDescription>
           <ProductInfo>
             <ProductQnt>
-              <ProductQntPlus>
+              <ProductQntPlus onClick={() => increment(product)}>
                 <Icon name="add-circle-outline" size={20} color="#7159c1" />
               </ProductQntPlus>
-              <InputQnt>1</InputQnt>
-              <ProductQntRemove>
+              <InputQnt>{product.amount}</InputQnt>
+              <ProductQntRemove onClick={() => decrement(product)}>
                 <Icon name="remove-circle-outline" size={20} color="#7159c1" />
               </ProductQntRemove>
             </ProductQnt>
-            <ProductSubPrice>R$ 1,200.00</ProductSubPrice>
-          </ProductInfo>
-        </Product>
-        <Product>
-          <ProductDescription>
-            <ProductImage
-              source={{
-                uri:
-                  'https://imgcentauro-a.akamaihd.net/900x900/92344102/tenis-new-balance-ml501-masculino-img.jpg',
-              }}
-            />
-            <ProducTexts>
-              <Title>Tênis de caminhada leve e confortavél</Title>
-              <Price>R$ 1000,00</Price>
-            </ProducTexts>
-            <ButtonDelete>
-              <Icon name="delete-forever" size={20} color="#7159c1" />
-            </ButtonDelete>
-          </ProductDescription>
-          <ProductInfo>
-            <ProductQnt>
-              <ProductQntPlus>
-                <Icon name="add-circle-outline" size={20} color="#7159c1" />
-              </ProductQntPlus>
-              <InputQnt>1</InputQnt>
-              <ProductQntRemove>
-                <Icon name="remove-circle-outline" size={20} color="#7159c1" />
-              </ProductQntRemove>
-            </ProductQnt>
-            <ProductSubPrice>R$ 1,200.00</ProductSubPrice>
+            <ProductSubPrice>{product.subtotal}</ProductSubPrice>
           </ProductInfo>
         </Product>
       </ProductList>
       <Total>
         <TotalText>Total</TotalText>
-        <TotalPrice>R$ 1,200.00</TotalPrice>
+        <TotalPrice>{total}</TotalPrice>
         <TotalButton>
           <TottalButtonText>Finalizar Pedido</TottalButtonText>
         </TotalButton>
@@ -104,3 +90,27 @@ export default function Cart() {
     // </Container>
   );
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart.map(product => ({
+    ...product,
+    // subtotal: formatPrice(product.price * product.amount),
+    subtotal: product.price * product.amount,
+  })),
+  // total: formatPrice(
+  //   state.cart.reduce((total, product) => {
+  //     return total + product.price * product.amount;
+  //   }, 0)
+  // ),
+  total: state.cart.reduce((total, product) => {
+    return total + product.price * product.amount;
+  }, 0),
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);
